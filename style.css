@@ -1,0 +1,93 @@
+body {
+	background-image: url("bg.png");
+	background-size: cover;
+	font-family:  sans-serif;
+	font-weight: bold;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	position: fixed;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 1vw;
+}
+
+.first,.second
+{
+	color: #a23f2d;
+}
+
+
+#box,#box2 {
+	background-color: white;
+	opacity: 80%;
+	text-align: center;
+	font-size: 1.8vw;
+	width: 74vw;
+	margin-left: 13vw;
+	padding-top: 1vw;
+	padding-left: 1vw;
+	border-radius: 4vw;
+  animation-name: shiftbox;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+#box2 {
+	height: 35vw;
+	padding: 1.2vw;
+}
+
+@keyframes shiftbox {
+  0%   {margin-left: 13vw ;width: 74vw}
+  25%  {margin-left: 15vw ;width: 70vw}
+  50%  {margin-left: 17vw ;width: 66vw}
+  75%  {margin-left: 15vw ;width: 70vw}
+  100% {margin-left: 13vw ;width: 74vw}
+}
+
+.status {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.head {
+	font-size: 2vw;
+}
+
+.gamegrid{
+	background: #a23f2d;
+	width: 37.3vw;
+	height: 28.5vw;
+	margin-top: 4vw auto;
+	margin: 2vw auto;
+	padding: 2vw;
+	justify-content: center;
+	display: grid;
+	grid-template-columns: repeat(15,1fr);
+	grid-template-rows: repeat(12,1fr);
+	column-gap: 0.2vw;
+	row-gap: 0.2vw;
+	border-radius: 3vw;
+}
+.cell{
+	height: 2.1vw;
+	width:  2.1vw;
+	color: black;
+	
+	background: tomato;
+	
+	justify-content: center;
+	align-items: center;
+}
+.cell:hover{
+	cursor: pointer;
+	background: #a23f2d;
+}
+
+.clicked {
+	background-color: white;
+}
