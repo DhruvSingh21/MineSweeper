@@ -172,3 +172,8 @@ var sw = {
 
 };
 window.addEventListener("load", sw.init);
+
+window.addEventListener('contextmenu', function (e) { 
+  // do something here... 
+  e.preventDefault(); 
+}, false);
