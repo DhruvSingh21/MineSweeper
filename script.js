@@ -44,9 +44,9 @@ function update_numbers(){
 				if(i%15!=14 && i-15>=0 && cells[i-14].classList[2]=="bomb") cnt++;
 				if(i-15>=0 && cells[i-15].classList[2]=="bomb") cnt++;
 				if(i%15!=0 && cells[i-1].classList[2]=="bomb") cnt++;
-				if(i+15<150 && cells[i+15].classList[2]=="bomb") cnt++;
-				if(i+16<150 && i%15!=14 && cells[i+16].classList[2]=="bomb") cnt++;
-				if(i+15<150 && i%4!=0 && cells[i+14].classList[2]=="bomb") cnt++;
+				if(i+15<180 && cells[i+15].classList[2]=="bomb") cnt++;
+				if(i+16<180 && i%15!=14 && cells[i+16].classList[2]=="bomb") cnt++;
+				if(i+15<180 && i%4!=0 && cells[i+14].classList[2]=="bomb") cnt++;
 				if(i%15!=14 && cells[i+1].classList[2]=="bomb") cnt++;
 				cells[i].innerHTML=cnt;
 			}
@@ -129,6 +129,7 @@ for(const cell of cells){
 	cell.removeEventListener('click',change);
 };
 
+
 }
 
 function change(a) {
@@ -203,9 +204,5 @@ for(const cell of cells){
 
 window.addEventListener("load", sw.init);
 
-window.addEventListener('contextmenu', function (e) {
-  e.preventDefault(); 
-}, false);
-
-help.addEventListener('click',makemodalvisible)
-close.addEventListener('click',makemodalvanish)
+help.addEventListener('click',makemodalvisible);
+close.addEventListener('click',makemodalvanish);
