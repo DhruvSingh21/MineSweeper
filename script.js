@@ -35,9 +35,13 @@ function update_numbers(){
 			{
 				hintarr.push(i);
 				let cnt=0;
+				if(i-15>=0 && i%15!=0 && cells[i-16].classList[2]=="bomb") cnt++;
+				if(i%15!=14 && i-15>=0 && cells[i-14].classList[2]=="bomb") cnt++;
 				if(i-15>=0 && cells[i-15].classList[2]=="bomb") cnt++;
 				if(i%15!=0 && cells[i-1].classList[2]=="bomb") cnt++;
 				if(i+15<150 && cells[i+15].classList[2]=="bomb") cnt++;
+				if(i+16<150 && i%15!=14 && cells[i+16].classList[2]=="bomb") cnt++;
+				if(i+15<150 && i%4!=0 && cells[i+14].classList[2]=="bomb") cnt++;
 				if(i%15!=14 && cells[i+1].classList[2]=="bomb") cnt++;
 				cells[i].innerHTML=cnt;
 			}
