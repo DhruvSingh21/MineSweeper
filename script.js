@@ -102,7 +102,10 @@ function show_bombs(){
 function game_lost(){
 	show_bombs();
 	sw.stop();
+
 	modal2.style.display="block";
+	document.getElementById("my_audio").pause();
+  document.getElementById("my_audio_2").play();
 	return;
 }
 function win(){
@@ -140,15 +143,17 @@ function change(a) {
   		sw.start();
   		star.classList.add("started");
   		elapsed.classList.add("started");
+  		document.getElementById("my_audio").play();
   	}
   if(hint+points+bombs==150) win();
 };
 
-
-hintt.addEventListener('click',update_hints);
-for(const cell of cells){
-	cell.addEventListener('click',change);
-};
+function makemodalvisible(){
+modal.style.display="block";
+}
+function makemodalvanish(){
+modal.style.display="none";
+}
 
 var sw = {
   
@@ -189,18 +194,18 @@ var sw = {
   },
 
 };
+
+
+hintt.addEventListener('click',update_hints);
+for(const cell of cells){
+	cell.addEventListener('click',change);
+};
+
 window.addEventListener("load", sw.init);
 
 window.addEventListener('contextmenu', function (e) {
   e.preventDefault(); 
 }, false);
-
-function makemodalvisible(){
-modal.style.display="block";
-}
-function makemodalvanish(){
-modal.style.display="none";
-}
 
 help.addEventListener('click',makemodalvisible)
 close.addEventListener('click',makemodalvanish)
