@@ -19,7 +19,7 @@ function generate_board(){
 bombs= Math.floor(Math.random()*65) + 25;
 
 while(bombarr.length < bombs){
-    var r = Math.floor(Math.random()*149);
+    var r = Math.floor(Math.random()*179);
     if(bombarr.indexOf(r) === -1 && r!=first) bombarr.push(r);
 }
 for(var i=0;i<bombarr.length;i++)
