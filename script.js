@@ -3,10 +3,13 @@ const modal = document.querySelector('.modal');
 const start = document.querySelector('.start');
 const pt = document.querySelector('.first');
 const ht = document.querySelector('.second');
+const star = document.querySelector('.sw');
 const hintt = document.querySelector('.hintbutton');
+const elapsed = document.querySelector('.elp');
 let hint=0;
 let first=-1;
 let points=0;
+let load=-1;
 let bombs=0;
 var bombarr =[];
 var hintarr =[];
@@ -65,10 +68,12 @@ const pt = document.querySelector('.first');
 function update_hints(){
 	cells[hintarr[0]].classList.add("clicked");
 	hint++;
+	points-=4;
   hintarr.splice(0, 1);
 	let a="Hints Used: ";
 	let b=hint.toString();
 	ht.innerHTML=a+b;
+	update_points();
 	return;
 }
 
@@ -82,12 +87,13 @@ function show_bombs(){
 
 function game_lost(){
 	show_bombs();
+	sw.stop();
 	return;
 }
 function check_bomb(a){
 	if(a.target.classList[2]!="bomb") 
 		{
-			points++;
+			points+=10;
 			update_points();
 			var index=hintarr.indexOf(Number(a.target.classList[1]));
 			hintarr.splice(index, 1);
@@ -95,10 +101,16 @@ function check_bomb(a){
 		}
 	gameover=1;
 	game_lost();
+
+hintt.removeEventListener('click',update_hints);
+for(const cell of cells){
+	cell.classList.add("over");
+	cell.removeEventListener('click',change);
+};
+
 }
 
 function change(a) {
-	console.log(hintarr);
   check_bomb(a);
   a.target.classList.add("clicked");
   if(first==-1) 
@@ -107,12 +119,56 @@ function change(a) {
   		generate_board();
   		update_numbers();
   		shuffleArray(hintarr);
+  		sw.start();
+  		star.classList.add("started");
+  		elapsed.classList.add("started");
   	}
   if(hint+points+bombs==150) win();
 };
-console.log(bombarr);
+
+
 hintt.addEventListener('click',update_hints);
 for(const cell of cells){
 	cell.addEventListener('click',change);
 };
 
+var sw = {
+  
+  etime : null, 
+  erst : null, 
+  ego : null, 
+  init : function () {
+    load=1;
+    sw.etime = document.getElementById("sw-time");
+    sw.ego = document.getElementById("sw-go");
+  },
+
+  timer : null, // timer object
+  now : 0, // current elapsed time
+  tick : function () {
+
+    sw.now++;
+    var remain = sw.now;
+    var hours = Math.floor(remain / 3600);
+    remain -= hours * 3600;
+    var mins = Math.floor(remain / 60);
+    remain -= mins * 60;
+    var secs = remain;
+
+    if (hours<10) { hours = "0" + hours; }
+    if (mins<10) { mins = "0" + mins; }
+    if (secs<10) { secs = "0" + secs; }
+    sw.etime.innerHTML = hours + ":" + mins + ":" + secs;
+  },
+  
+  start : function () {
+    sw.timer = setInterval(sw.tick, 1000);
+  },
+
+  stop  : function () {
+    clearInterval(sw.timer);
+    sw.timer = null;
+  },
+
+};
+window.addEventListener("load", sw.init);

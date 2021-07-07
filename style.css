@@ -84,22 +84,21 @@ body {
 }
 .gamegrid{
 	background: #a23f2d;
-	width: 37.3vw;
-	height: 28.5vw;
-	margin-top: 4vw auto;
-	margin: 2vw auto;
-	padding: 2vw;
+	width: 32.3vw;
+	height: 25.5vw;
+	margin: 1vw auto;
+	padding: 1.5vw;
 	justify-content: center;
 	display: grid;
 	grid-template-columns: repeat(15,1fr);
 	grid-template-rows: repeat(12,1fr);
-	column-gap: 0.2vw;
-	row-gap: 0.2vw;
+	column-gap: 0.18vw;
+	row-gap: 0.18vw;
 	border-radius: 3vw;
 }
 .cell{
-	height: 2.1vw;
-	width:  2.1vw;
+	height: 1.9vw;
+	width:  1.9vw;
 	color: tomato;
 	
 	background: tomato;
@@ -122,4 +121,17 @@ body {
 .hintbutton:hover,.helpmenu:hover,.LeaderBoard:hover{
 	color: tomato;
 	cursor: pointer;
+}
+
+.sw,.elp{
+	color: white;
+}
+.started{
+	color: black;
+}
+
+.over:hover{
+	color: tomato;
+	cursor: default;
+	background-color: tomato;
 }
