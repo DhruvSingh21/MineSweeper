@@ -1,11 +1,15 @@
 const cells = document.querySelectorAll('.cell');
 const modal = document.querySelector('.modal');
+const modal2 = document.querySelector('.modal2');
+const modal3 = document.querySelector('.modal3');
 const start = document.querySelector('.start');
 const pt = document.querySelector('.first');
 const ht = document.querySelector('.second');
 const star = document.querySelector('.sw');
 const hintt = document.querySelector('.hintbutton');
 const elapsed = document.querySelector('.elp');
+const help = document.querySelector('.helpmenu');
+const close = document.querySelector('.Close');
 let hint=0;
 let first=-1;
 let points=0;
@@ -16,7 +20,8 @@ var hintarr =[];
 let gameover=0;
 
 function generate_board(){
-bombs= Math.floor(Math.random()*65) + 25;
+const random = Math.floor(Math.random()*40)+25;
+bombs= Math.floor(Math.random()*random) + 25;
 
 while(bombarr.length < bombs){
     var r = Math.floor(Math.random()*179);
@@ -70,6 +75,11 @@ const pt = document.querySelector('.first');
 }
 
 function update_hints(){
+	if(hintarr.length==0 && first!=-1) 
+		{
+			win();
+			return;
+		}
 	cells[hintarr[0]].classList.add("clicked");
 	hint++;
 	points-=4;
@@ -92,7 +102,11 @@ function show_bombs(){
 function game_lost(){
 	show_bombs();
 	sw.stop();
+	modal2.style.display="block";
 	return;
+}
+function win(){
+	modal3.style.display="block";
 }
 function check_bomb(a){
 	if(a.target.classList[2]!="bomb") 
@@ -177,7 +191,16 @@ var sw = {
 };
 window.addEventListener("load", sw.init);
 
-window.addEventListener('contextmenu', function (e) { 
-  // do something here... 
+window.addEventListener('contextmenu', function (e) {
   e.preventDefault(); 
 }, false);
+
+function makemodalvisible(){
+modal.style.display="block";
+}
+function makemodalvanish(){
+modal.style.display="none";
+}
+
+help.addEventListener('click',makemodalvisible)
+close.addEventListener('click',makemodalvanish)
