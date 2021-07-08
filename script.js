@@ -104,8 +104,6 @@ function game_lost(){
 	sw.stop();
 
 	modal2.style.display="block";
-	document.getElementById("my_audio").pause();
-  document.getElementById("my_audio_2").play();
 	return;
 }
 function win(){
@@ -144,7 +142,7 @@ function change(a) {
   		sw.start();
   		star.classList.add("started");
   		elapsed.classList.add("started");
-  		document.getElementById("my_audio").play();
+ 
   	}
   if(hint+points+bombs==150) win();
 };
