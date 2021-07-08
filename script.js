@@ -144,7 +144,7 @@ function change(a) {
   		elapsed.classList.add("started");
  
   	}
-  if(hint+points+bombs==150) win();
+  if(hint+points+bombs==180) win();
 };
 
 function makemodalvisible(){
